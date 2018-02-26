@@ -38,7 +38,7 @@
 		printf("4 :length of list\n");
 		printf("5 :add element after particular element\n");
 		printf("6 :add element before particular element\n");
-		printf("7 :delete ")
+		printf("7 :delete \n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -184,7 +184,7 @@
 		  count++;
 	}
 
-		printf("length of linked list is %d",count);
+		printf("length of linked list is %d\n",count);
 	}
 }
 
@@ -196,28 +196,23 @@
          scanf("%d",&i);
         printf("enter data:");
          scanf("%d",&n);
-       struct node* p,*temp;
+       struct node* p,*temp,*ptr;
        temp=(struct node *)(malloc(sizeof(struct node)));
        temp->data=n;
        temp->link=NULL;
         p=root;
 
         while(p->data!=i)
-          {
+          {    
 		p=p->link;
           }
 
-		if(p->link==NULL)
-			{
-			  p->link=temp;
-			}
 		
-		else
 
-		{
+		
 		temp->link=p->link;
                 p->link=temp;
-               }
+               
 }
 
 
@@ -241,19 +236,61 @@
 			p=p->link;
 		}
 
-		 if(p==root)
+		if(p==root)
                    {
 			temp->link=p;
 			root=temp;
  
                   }
 	
-	else
-                 {
+	             else
+			{
+                 
 			temp->link=p;
 			ptr->link=temp;
-		}
+			}
+		
  }
+
+
+    void delete()
+
+	{
+
+	  struct node *temp,*p;
+	  temp=root;
+	  int i;
+
+	    printf("enter which element you want to delete :");
+	    scanf("%d",&i);
+
+		while(temp->data!=i)
+			{
+				p=temp;
+				temp=temp->link;
+			}
+
+                if(temp==root)
+                      {
+
+                         root=temp->link;
+			temp->link=NULL;
+                        free(temp);
+                        printf("element deleted succesfully\n");
+
+
+                      }
+			else
+			{
+                          p->link=temp->link;
+                          temp->link=NULL;
+                          free(temp);
+ 			 printf("element deleted succesfully\n");
+
+			}
+
+
+            }
 
 
 
