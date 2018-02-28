@@ -24,7 +24,9 @@
 
   void add_before();
 
-  void delete();
+  void delete(); 
+
+  void reverse_ll();
 
   int main()
 	{
@@ -39,6 +41,7 @@
 		printf("5 :add element after particular element\n");
 		printf("6 :add element before particular element\n");
 		printf("7 :delete \n");
+		printf("8 :reverse linked list");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -71,6 +74,10 @@
 
 		case 7:
 		delete();
+		break;
+
+		case 8:
+		reverse_ll();
 		break;
 
 		default: printf("invalid option");
@@ -294,15 +301,23 @@
 
 
 
+   void reverse_ll()
+    {
 
+       struct node *p=NULL,*c,*n;
+        c=root;
 
-
-
-
-
-
-
-
+          while(c->link!=NULL)
+            {
+             n=c->link;
+             c->link=p;
+             p=c;
+             c=n;
+             }
+  
+            root=c;
+           root->link=p;
+        }
 
 
 
