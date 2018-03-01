@@ -48,7 +48,7 @@
 		printf("7 :delete \n");
 		printf("8 :reverse linked list\n");
                 printf("9 :swapping of 2 numbers\n");
-		printf("9 :swapping of 2 nodes\n");
+		printf("10 :swapping of 2 nodes\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
