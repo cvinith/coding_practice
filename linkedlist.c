@@ -28,6 +28,8 @@
 
   void reverse_ll();
 
+  void swap();
+
   int main()
 	{
          int option;
@@ -41,7 +43,8 @@
 		printf("5 :add element after particular element\n");
 		printf("6 :add element before particular element\n");
 		printf("7 :delete \n");
-		printf("8 :reverse linked list");
+		printf("8 :reverse linked list\n");
+                printf("9 :swapping of 2 numbers\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -78,7 +81,11 @@
 
 		case 8:
 		reverse_ll();
-		break;
+		break; 
+		
+		case 9:
+		swap();
+                break;
 
 		default: printf("invalid option");
 
@@ -318,6 +325,126 @@
             root=c;
            root->link=p;
         }
+
+
+
+
+
+  void swap()
+  {
+
+   int num1,num2;
+   struct node *first,*second,*previous1,*previous2,*next1,*next2;
+   first=root;
+   second=root;
+   printf("enter 1st element data which you want to swap");
+   scanf("%d",&num1);
+   printf("enter 2nd element data which you want to swap");
+   scanf("%d",&num2);
+   
+   while(first->data!=num1)
+   {
+   previous1=first;
+   first=first->link;
+   }
+   next1=first->link;
+   
+   while(second->data!=num2)
+   {
+   previous2=second;
+   second=second->link;
+   }
+   next2=second->link;
+   
+
+   if(root==first && first==previous2)
+   {
+   first->link=next2;
+   second->link=first;
+   root=second;
+   }
+
+   else if(second==root && second==previous1)
+   {
+   second->link=next1;
+   root=first;
+   first->link=second;
+  }
+
+
+   else if(root==first)
+   {
+   first->link=next2;
+   previous2->link=first;
+   second->link=next1;
+   root=second;
+   }
+ 
+
+ else if(second==root)
+   {
+   second->link=next1;
+   previous1->link=second;
+   root=first;
+   first->link=next2;
+  }
+
+  else if(second==previous1&&first==next2)
+  {
+   previous2->link=first;
+   first->link=second;
+   second->link=next1;
+   }
+
+
+
+  else if(first==previous2&&second==next1)
+  {
+  previous1->link=second;
+  second->link=first;
+  first->link=next2;
+   
+   
+  }
+  
+  else
+  {
+  previous1->link=second;
+  second->link=next1;
+  previous2->link=first;
+  first->link=next2;
+   
+   
+  }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
