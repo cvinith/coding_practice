@@ -30,6 +30,9 @@
 
   void swap();
 
+  void swap_node();
+
+
   int main()
 	{
          int option;
@@ -45,6 +48,7 @@
 		printf("7 :delete \n");
 		printf("8 :reverse linked list\n");
                 printf("9 :swapping of 2 numbers\n");
+		printf("9 :swapping of 2 nodes\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -83,7 +87,11 @@
 		reverse_ll();
 		break; 
 		
-		case 9:
+		case 9 :
+                swap_node();
+		break;
+	
+		case 10:
 		swap();
                 break;
 
@@ -330,7 +338,7 @@
 
 
 
-  void swap()
+  void swap_node()
   {
 
    int num1,num2;
@@ -419,11 +427,32 @@
   }
 
 
+  void swap()
+  {
+  
+   struct node *current1,*current2;
+   current1=root;
+   current2=root;
+   int data1,data2;
+   printf("enter which element you want to swap");
+   scanf("%d",&data1);
+   scanf("%d",&data2);
+    
+   if(data1==data2)
+     return;
 
+  
+   while(current1->data!=data1)  
+   current1=current1->link;
+   
+   while(current2->data!=data2)
+   current2=current2->link;
+  
 
-
-
-
+   current1->data=current1->data+current2->data;
+   current2->data=current1->data-current2->data;
+   current1->data=current1->data-current2->data;
+  }
 
 
 
