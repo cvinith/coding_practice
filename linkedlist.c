@@ -18,7 +18,7 @@
 
   void add_begin();
 
-  void length_ll();
+  int length_ll();
 
   void add_after();
 
@@ -34,10 +34,13 @@
 
   void search();
 
+  void middle();
+
+
 
   int main()
 	{
-         int option;
+         int option,count;
          while(1)
           {
 		printf("************main menu************\n");
@@ -52,6 +55,7 @@
                 printf("9 :swapping of 2 numbers\n");
 		printf("10 :swapping of 2 nodes\n");
                 printf("11 :searching an element in a linked list\n");
+		printf("12 :finding middle element in a linked list\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -71,7 +75,8 @@
 		break;
 
 		case 4:
-		length_ll();
+		count=length_ll();
+                printf("length of linked list is %d\n",count);
 		break;
 
 		case 5:
@@ -102,9 +107,13 @@
                 search();
                 break;
              
+		case 12:
+                middle();
+                break;
 
              
 		default: printf("invalid option");
+		break;
 
 		}
 	 }
@@ -194,7 +203,7 @@
 }
 
 
-    void length_ll()
+    int length_ll()
        {
 
           if(root==NULL)
@@ -202,23 +211,25 @@
          printf("no elements list is empty\n");
        }
 
-	else
+	 else
 	
-	{
+	   {
 
 		int count=0;
 		struct node *p;
 		p=root;
+
 		while(p!=NULL)
 		{
 		  p=p->link;
 		  count++;
-	}
+	        }
 
-		printf("length of linked list is %d\n",count);
-	}
-}
+		
+		return count;
+	   }
 
+ }
 
   void add_after()
   {
@@ -412,7 +423,7 @@
    first->link=second;
    second->link=next1;
    }
-
+ 
 
 
   else if(first==previous2&&second==next1)
@@ -432,7 +443,7 @@
   first->link=next2;
    
    
-  }
+  } 
   }
 
 
@@ -488,7 +499,31 @@
 
 
 
-  
+  void middle()
+    {
+
+     int count,mid,i=0;
+     count=length_ll();
+     struct node *temp;
+     temp=root;
+
+     if(count%2==0)
+     {
+      mid=(count/2)+1;
+     }
+     else
+     {
+     mid=(count+1)/2;
+     }
+
+     while(i<mid-1)
+     {
+     temp=temp->link;
+     i++;
+     }
+
+     printf("middle element is %d\n",temp->data);
+  }
 
 
 
