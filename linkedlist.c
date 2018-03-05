@@ -32,6 +32,8 @@
 
   void swap_node();
 
+  void search();
+
 
   int main()
 	{
@@ -49,6 +51,7 @@
 		printf("8 :reverse linked list\n");
                 printf("9 :swapping of 2 numbers\n");
 		printf("10 :swapping of 2 nodes\n");
+                printf("11 :searching an element in a linked list\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -94,7 +97,13 @@
 		case 10:
 		swap();
                 break;
+ 
+                case 11:
+                search();
+                break;
+             
 
+             
 		default: printf("invalid option");
 
 		}
@@ -457,16 +466,29 @@
 
 
 
+  void search()
+    {  
+     printf("enter element to be search");
+     int ele;
+     scanf("%d",&ele);
+      struct node *temp;
+      temp=root;
+      while(temp!=NULL)
+      {
+       if(temp->data==ele)
+       {
+       printf("element %d is found in a linked list\n",temp->data);
+       break;
+       }
+       temp=temp->link;
+       }
+      if(temp==NULL)
+       printf("element is not present in a linked list\n");
+    }
 
 
 
-
-
-
-
-
-
-
+  
 
 
 
