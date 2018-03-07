@@ -17,6 +17,8 @@
 
  void traverse();
 
+ void addAtBegin();
+
  void main()
   {
    int n,l;
@@ -27,6 +29,7 @@
         printf("1: to insert\n");
 	printf("2: length of Dll\n");
         printf("3: traversing the elements\n");
+	printf("4: adding node at beginng of dll\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -44,6 +47,10 @@
 	 case 3:
          traverse();
          break;
+
+	 case 4:
+	 addAtBegin();
+	 break;
 	}
     }
   }
@@ -96,6 +103,8 @@
 
   }
 
+
+
  void traverse()
   {
    struct node *temp;
@@ -116,7 +125,28 @@
   }
 
 
+ void addAtBegin()
+ {
+  int ele;
+  struct node *temp;
+  temp=(struct node*)malloc(sizeof(struct node));
+  printf("enter data");
+  scanf("%d",&ele);
+  temp->data=ele;
+  temp->right=NULL;
+  temp->left=NULL;
 
+  if(root==NULL)
+   {
+    root=temp;
+   }
+  else
+   {
+    temp->right=root;
+    root->left=temp;
+    root=temp;
+   }
+ }
 
 
 
