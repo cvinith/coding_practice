@@ -19,7 +19,9 @@
 
  void addAtBegin();
 
- void addAfter(); 
+ void addAfter();
+
+ void traverseInReverse(); 
 
  void main()
   {
@@ -33,6 +35,7 @@
         printf("3: traversing the elements\n");
 	printf("4: adding node at beginng of dll\n");
         printf("5: adding a new node after a particular node\n");
+	printf("6: traversing the elements in reverse\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -58,6 +61,10 @@
 	 case 5:
 	 addAfter();
 	 break;
+
+	 case 6:
+ 	 traverseInReverse();
+         break;
 	}
     }
   }
@@ -130,7 +137,7 @@
    printf("\n");
    }
   }
-
+ 
 
  void addAtBegin()
  {
@@ -156,7 +163,7 @@
  }
 
  void addAfter()
- {
+  {
   int i,key=1,ele;
   struct node *temp,*p;
   p=root;
@@ -178,11 +185,30 @@
  }
 
 
+ void traverseInReverse()
+  {
+   struct node *temp;
+   temp=root;
+   if(temp==NULL)
+   {
+    printf("there are no elements to traverse\n");
+   }
+   else
+   {
+    while(temp->right!=NULL)
+     {
+      temp=temp->right;
+     }
+    while(temp!=NULL)
+     {
+      printf("%d\t",temp->data);
+      temp=temp->left;
+     }
+   printf("\n");
+  }
+ }
 
-
-
-
-
+   
 
 
 
