@@ -15,14 +15,18 @@
 
  int length();
 
+ void traverse();
+
  void main()
   {
    int n,l;
 
   while(1)
    {
-	printf("1: to insert\n");
+	printf("*****main menu*****\n");
+        printf("1: to insert\n");
 	printf("2: length of Dll\n");
+        printf("3: traversing the elements\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -36,7 +40,10 @@
 	 l=length();
          printf("length of a doublelinkedlist is :%d\n",l );
 	 break;
-
+	
+	 case 3:
+         traverse();
+         break;
 	}
     }
   }
@@ -88,6 +95,52 @@
      return count;
 
   }
+
+ void traverse()
+  {
+   struct node *temp;
+   temp=root;
+   if(temp==NULL)
+   {
+    printf("there are no elements to traverse\n");
+   }
+   else
+   {
+    while(temp!=NULL)
+     {
+      printf("%d\t",temp->data);
+      temp=temp->right;
+     }
+   printf("\n");
+   }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
