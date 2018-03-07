@@ -21,7 +21,9 @@
 
  void addAfter();
 
- void traverseInReverse(); 
+ void traverseInReverse();
+ 
+ void deleteAtEnd();
 
  void main()
   {
@@ -36,6 +38,7 @@
 	printf("4: adding node at beginng of dll\n");
         printf("5: adding a new node after a particular node\n");
 	printf("6: traversing the elements in reverse\n");
+	printf("7: deleting last node in dll\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -65,6 +68,10 @@
 	 case 6:
  	 traverseInReverse();
          break;
+
+         case 7:
+         deleteAtEnd();
+         break;
 	}
     }
   }
@@ -75,7 +82,7 @@
    int n;
    struct node *temp,*p;
    temp=(struct node*)malloc(sizeof(struct node));
-   printf("enter data to insert");
+   printf("enter data to insert : ");
    scanf("%d",&n);
    p=root;
    temp->data=n;
@@ -144,7 +151,7 @@
   int ele;
   struct node *temp;
   temp=(struct node*)malloc(sizeof(struct node));
-  printf("enter data");
+  printf("enter data : ");
   scanf("%d",&ele);
   temp->data=ele;
   temp->right=NULL;
@@ -165,12 +172,12 @@
  void addAfter()
   {
   int i,key=1,ele;
-  struct node *temp,*p;
+  struct node *temp,*p,*store_next;
   p=root;
   temp=(struct node*)malloc(sizeof(struct node));
-  printf("after which node you want add a new node");
+  printf("after which node you want add a new node : ");
   scanf("%d",&i);
-  printf("enter data to insert");
+  printf("enter data to insert :");
   scanf("%d",&ele);
 
   while(key!=i)
@@ -181,7 +188,16 @@
   temp->data=ele;
   temp->right=p->right;
   temp->left=p;
-  p->right=temp;
+  if(p->right==NULL)
+  {
+    p->right=temp;
+  }
+  else
+  {
+   p->right->left=temp;
+   p->right=temp;
+  }
+  
  }
 
 
@@ -210,8 +226,23 @@
 
    
 
+ void deleteAtEnd()
+ {
+  struct node *temp;
+  temp=root;
+  
+  
 
-
+  while(temp->right!=NULL)
+  {
+   temp=temp->right;
+  }
+  
+  temp->left->right=NULL;
+  temp->left=NULL;
+  free(temp);
+  printf("element deleted succesfully\n"); 
+ }
 
 
 
