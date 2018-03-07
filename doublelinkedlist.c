@@ -19,6 +19,8 @@
 
  void addAtBegin();
 
+ void addAfter(); 
+
  void main()
   {
    int n,l;
@@ -30,6 +32,7 @@
 	printf("2: length of Dll\n");
         printf("3: traversing the elements\n");
 	printf("4: adding node at beginng of dll\n");
+        printf("5: adding a new node after a particular node\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -50,6 +53,10 @@
 
 	 case 4:
 	 addAtBegin();
+	 break;
+
+	 case 5:
+	 addAfter();
 	 break;
 	}
     }
@@ -148,6 +155,27 @@
    }
  }
 
+ void addAfter()
+ {
+  int i,key=1,ele;
+  struct node *temp,*p;
+  p=root;
+  temp=(struct node*)malloc(sizeof(struct node));
+  printf("after which node you want add a new node");
+  scanf("%d",&i);
+  printf("enter data to insert");
+  scanf("%d",&ele);
+
+  while(key!=i)
+  {
+  p=p->right;
+  key++;
+  }
+  temp->data=ele;
+  temp->right=p->right;
+  temp->left=p;
+  p->right=temp;
+ }
 
 
 
