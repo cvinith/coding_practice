@@ -27,6 +27,8 @@
 
  void addBefore();
 
+ void deleteAtBegin();
+
  void main()
   {
    int n,l;
@@ -42,6 +44,7 @@
 	printf("6: traversing the elements in reverse\n");
 	printf("7: deleting last node in dll\n");
         printf("8: adding a new node before a particular node\n");
+	printf("9: deleting a node at beginning\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -78,6 +81,10 @@
 
 	 case 8:
 	 addBefore();
+	 break;
+
+ 	 case 9:
+	 deleteAtBegin();
 	 break;
 	}
     }
@@ -245,6 +252,12 @@
   {
    temp=temp->right;
   }
+  if(root==temp)
+  {
+   root=temp->right;
+   temp->right=NULL;
+   free(temp);
+  }
   
   temp->left->right=NULL;
   temp->left=NULL;
@@ -288,8 +301,14 @@
   }
  }
 
-
-
+ void deleteAtBegin()
+  {
+   struct node *temp;
+   temp=root;
+   root=temp->right;
+   temp->right=NULL;
+   free(temp);
+  }
 
 
 
