@@ -25,6 +25,8 @@
  
  void deleteAtEnd();
 
+ void addBefore();
+
  void main()
   {
    int n,l;
@@ -39,6 +41,7 @@
         printf("5: adding a new node after a particular node\n");
 	printf("6: traversing the elements in reverse\n");
 	printf("7: deleting last node in dll\n");
+        printf("8: adding a new node before a particular node\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -72,6 +75,10 @@
          case 7:
          deleteAtEnd();
          break;
+
+	 case 8:
+	 addBefore();
+	 break;
 	}
     }
   }
@@ -169,6 +176,7 @@
    }
  }
 
+
  void addAfter()
   {
   int i,key=1,ele;
@@ -244,6 +252,41 @@
   printf("element deleted succesfully\n"); 
  }
 
+
+ void addBefore()
+  {
+   int ele,i,j=1;
+   struct node *temp,*p,*q;
+   p=root;
+   temp=(struct node*)malloc(sizeof(struct node));
+   printf("enter before which node you want to add a new node");
+   scanf("%d",&i);
+   printf("enter data");
+   scanf("%d",&ele);
+   temp->data=ele;
+   
+
+   while(j!=i)
+    {
+      p=p->right;
+      j++;
+    }
+  
+  if(p==root)
+  {
+   temp->right=root;
+   temp->left=NULL;
+   root->left=temp;
+   root=temp;
+  }
+ else
+  {
+   temp->right=p;
+   temp->left=p->left;
+   p->left->right=temp;
+   p->left=temp;
+  }
+ }
 
 
 
