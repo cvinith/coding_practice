@@ -29,6 +29,8 @@
 
  void deleteAtBegin();
 
+ void delete();
+
  void main()
   {
    int n,l;
@@ -45,6 +47,7 @@
 	printf("7: deleting last node in dll\n");
         printf("8: adding a new node before a particular node\n");
 	printf("9: deleting a node at beginning\n");
+	printf("10:delete a node at a particular position\n");
 	printf("enter your choice\n");
 	scanf("%d",&n);
 	
@@ -86,6 +89,10 @@
  	 case 9:
 	 deleteAtBegin();
 	 break;
+
+	 case 10:
+	 delete();
+ 	 break;
 	}
     }
   }
@@ -309,6 +316,48 @@
    temp->right=NULL;
    free(temp);
   }
+
+ void delete()
+ {
+  int i,j=1;
+  struct node *temp;
+  temp=root;
+  printf("enter which node you want to delete : ");
+  scanf("%d",&i);
+  
+  while(j!=i)
+  {
+   temp=temp->right;
+   j++;
+  }
+
+  if(temp==root)
+   {
+    root=temp->right;
+    temp->right=NULL;
+    free(temp);
+   }
+   else if(temp->right==NULL)
+   {
+    temp->left->right=NULL;
+    temp->left=NULL;
+    free(temp);
+   }
+  else
+   {
+    temp->right->left=temp->left;
+    temp->left->right=temp->right;
+    temp->left=NULL;
+    temp->right=NULL;
+    free(temp);
+   }
+  }
+
+
+
+
+
+
 
 
 
