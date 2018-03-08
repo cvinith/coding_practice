@@ -36,14 +36,16 @@
 
   void middle();
 
+  int lengthUsingRecurssion(struct node *p);
 
+  void searchUsingRecurssion(struct node *p,int x);
 
   int main()
 	{
-         int option,count;
+         int option,count,x;
          while(1)
           {
-		printf("************main menu************\n");
+		printf("\n************main menu************\n");
 		printf("1 :create a list\n");
 		printf("2 :display the list\n");
 		printf("3 :add at beginning\n");
@@ -56,6 +58,8 @@
 		printf("10 :swapping of 2 nodes\n");
                 printf("11 :searching an element in a linked list\n");
 		printf("12 :finding middle element in a linked list\n");
+		printf("13 :length using recurssion\n");
+		printf("14 :searching an element in a linked list using recurssion\n");
 		printf("enter your option:");
 		scanf("%d",&option);
 
@@ -111,7 +115,17 @@
                 middle();
                 break;
 
-             
+		case 13:
+		lengthUsingRecurssion(root);
+		printf("length of linked list is : %d\n",lengthUsingRecurssion(root));
+		break;
+
+		case 14:
+		printf("enter element to search : ");
+		scanf("%d",&x);
+		searchUsingRecurssion(root,x);
+		break;
+
 		default: printf("invalid option");
 		break;
 
@@ -528,9 +542,30 @@
 
 
 
+ int lengthUsingRecurssion(struct node *p)
+      {
+        if(p==NULL)
+         return 0;
+       else
+          return 1+lengthUsingRecurssion(p->link);
+      }
 
 
 
+ void searchUsingRecurssion(struct node *p,int x)
+      {
+        if(p==NULL)
+	 printf("elements is not found in linked list\n");
+
+	else if(p->data==x)
+	 printf("element is found\n");
+
+	else
+         searchUsingRecurssion(p->link,x);
+     }
+
+        
+ 
 
 
 
